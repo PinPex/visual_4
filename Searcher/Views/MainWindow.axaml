@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Searcher.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="650"
+        x:Class="Searcher.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Searcher"
+		Width="650"
+		Height="650">
+	<Window.Styles>
+		<StyleInclude Source="/Styles/Style.axaml"/>
+	</Window.Styles>
+	
+
+	<Grid Classes="Searcher" ShowGridLines="False" ColumnDefinitions="*, *" RowDefinitions="550, *, *">
+		<TextBox Name="Input" Classes="gridTextBox" Grid.Row="0" Grid.Column="0"/>
+		<TextBlock Name="Output" Classes="gridTextBlock" Grid.Row="0" Grid.Column="1"/>
+		<Button Name="OpenFileBtn"  Content="Open File" Classes="gridBtn" Grid.Row="1" Grid.Column="0"/>
+		<Button Name="SaveFileBtn" Content="Save File" Classes="gridBtn" Grid.Row="1" Grid.Column="1"/>
+		<Button Name="SetRegexBtn" Click="OpenSetRegex" Content="Set Regex" Classes="gridBtn" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+	</Grid>
+</Window>
