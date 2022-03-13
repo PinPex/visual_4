@@ -42,7 +42,7 @@ namespace Searcher.Views
                 if (filePath != null)
                 {
                     var context = this.DataContext as MainWindowViewModel;
-                    context.saveFile(string.Join(@"\", filePath), this.FindControl<TextBox>("Output").Text);
+                    context.saveFile(string.Join(@"\", filePath), this.FindControl<TextBlock>("Output").Text);
                 }
             };
 
@@ -56,12 +56,15 @@ namespace Searcher.Views
 
         private async void OpenSetRegex(object control, RoutedEventArgs arg)
         {
-            string? filter = await new SearchFilter().ShowDialog<string?>((Window)this.VisualRoot);
+            string currentFilter = "";
+            var context = this.DataContext as MainWindowViewModel;
+            if(context != null)
+                currentFilter = context.Filter;
+            string? filter = await new SearchFilter(currentFilter).ShowDialog<string?>((Window)this.VisualRoot);
             if (filter == null)
                 filter = "";
-            if(filter != "Cancel")
+            if(filter != "Cancel" && context != null)
             {
-                var context = this.DataContext as MainWindowViewModel; 
                 context.Filter = filter;
             }
         }
