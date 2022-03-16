@@ -15,12 +15,10 @@ namespace Searcher.Models
             string content = File.ReadAllText(path);
             return content;
         }
-
         public static void WriteFile(string path, string content)
         {
             File.WriteAllText(path, content);
         }
-
         public static string SearchByFilter(string str, string filter)
         {
             string result = "";
