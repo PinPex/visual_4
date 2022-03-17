@@ -15,7 +15,7 @@ namespace Searcher.ViewModels
         public string Path 
         { 
             get { return inputContent; } 
-            set { this.RaiseAndSetIfChanged(ref inputContent, ProcessingFile.ReadFile(value)); } 
+            set { this.RaiseAndSetIfChanged(ref inputContent, ProcessingFile.Read(value)); } 
             
         }
 
@@ -39,13 +39,13 @@ namespace Searcher.ViewModels
             set 
             {
                 this.RaiseAndSetIfChanged(ref filter, value);
-                OutputContent = ProcessingFile.SearchByFilter(inputContent, value);
+                OutputContent = ProcessingFile.Search(inputContent, value);
             }
         }
 
         public void saveFile(string path, string savingContent)
         {
-            ProcessingFile.WriteFile(path, savingContent);
+            ProcessingFile.Write(path, savingContent);
         }
     }
 }

@@ -10,24 +10,22 @@ namespace Searcher.Models
 {
     public class ProcessingFile
     {
-        public static string ReadFile(string path)
+        public static string Read(string path)
         {
-            string content = File.ReadAllText(path);
-            return content;
+            string con = File.ReadAllText(path);
+            return con;
         }
-
-        public static void WriteFile(string path, string content)
+        public static void Write(string path, string con)
         {
-            File.WriteAllText(path, content);
+            File.WriteAllText(path, con);
         }
-
-        public static string SearchByFilter(string str, string filter)
+        public static string Search(string str, string filter)
         {
             string result = "";
-            Regex regex = new Regex(@filter);
-            foreach(Match match in regex.Matches(str))
+            Regex reg = new Regex(@filter);
+            foreach(Match m in reg.Matches(str))
             {
-                result += match.Value + '\n';
+                result += m.Value + '\n';
             }
             return result;
         }
